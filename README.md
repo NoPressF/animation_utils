@@ -3,7 +3,8 @@ With this script you will be able to work with the OnPlayerFinishAnimation event
 
 # Example:
 ```pawn
-ApplyAnimation(playerid, "BOMBER", "BOM_PLANT_CROUCH_IN", 4.1, false, false, false, false, 0, true, /*This parameter You must set this parameter to a boolean value true = the function works, false = no. Default false.*/);
+new time_point = 0.5; // A time point between 0.0 and 1.0 calls OnPlayerFinishAnimation when, for example, the animation is halfway complete (0.5)
+au_ApplyAnimation(playerid, "BOMBER", "BOM_PLANT_CROUCH_IN", 4.1, false, false, false, false, 0, true, time_point);
 
 ```
 ```pawn
