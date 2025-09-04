@@ -39,6 +39,7 @@
 #endif
 
 forward OnPlayerFinishAnimation(playerid, animationid, during_time, bool: loop);
+forward OnPlayerFinishAnimationTimePoint(playerid, animationid, during_time, bool: loop);
 
 static enum e_AnimationUtils
 {
@@ -440,6 +441,19 @@ static stock au_CallOnPlayerFinishAnimation(const playerid, const playing_animat
 	);
 }
 
+static stock au_CallOnPlayerFinishAnimationTimePoint(const playerid, const playing_animationid)
+{
+	CallLocalFunction
+	(
+		"OnPlayerFinishAnimationTimePoint", 
+		"dddd", 
+		playerid, 
+		playing_animationid, 
+		au_GetFinishAnimationTime(playerid), 
+		g_AnimationUtilsData[playerid][au_animation_loop]
+	);
+}
+
 @_au_OnAnimationFinish(playerid, playing_animationid, animation_duration_time_point, bool: loop);
 @_au_OnAnimationFinish(playerid, playing_animationid, animation_duration_time_point, bool: loop)
 {
@@ -465,5 +479,5 @@ static stock au_CallOnPlayerFinishAnimation(const playerid, const playing_animat
 @_au_OnAnimationUpdateTimePoint(playerid, playing_animationid);
 @_au_OnAnimationUpdateTimePoint(playerid, playing_animationid)
 {
-	au_CallOnPlayerFinishAnimation(playerid, playing_animationid);
+	au_CallOnPlayerFinishAnimationTimePoint(playerid, playing_animationid);
 }
